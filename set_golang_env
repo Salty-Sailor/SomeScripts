@@ -1,0 +1,19 @@
+if [ -z "$MyGo_GODEV" ]; then
+	echo "enter MyGo dev env"
+	export MyGo_GODEV=TRUE
+	export OLD_PATH=$PATH
+	export OLD_GOPATH=$GOPATH
+	export OLD_GOBIN=$GOBIN
+	export GOPATH=$PWD
+	export PATH=$PATH:$GOPATH/bin
+	export GOBIN=$GOPATH/bin
+else
+	echo "exit MyGo dev env"
+	export GOPATH=$OLD_GOPATH
+	export PATH=$OLD_PATH
+	export GOBIN=$OLD_GOBIN
+	unset MyGo_GODEV
+	unset OLD_PATH
+	unset OLD_GOPATH
+	unset OLD_GOBIN
+fi
